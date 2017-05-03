@@ -1,5 +1,5 @@
 ---
-title: Hexo+openresty+github+webhook搭建个人博客.md
+title: Hexo/openresty/github/搭建个人博客
 date: 2017-05-03 03:35:33
 tags:
 ---
