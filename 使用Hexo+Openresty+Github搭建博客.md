@@ -1,5 +1,5 @@
 ---
-title: Hexo/openresty/github/搭建个人博客
+title: 使用Hexo+openresty+github搭建博客
 date: 2017-05-03 11:35:33
 tags:
 ---
