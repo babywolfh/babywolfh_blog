@@ -4,8 +4,6 @@ date: 2017-05-03 11:35:33
 tags: [hexo,openresty,github,博客] 
 categories: 其他
 toc: true
-comments: true
-layout: page
 ---
 
 本文主要记录自己使用hexo+openresty+github在VPS上搭建个人博客的方法，以免遗忘。
