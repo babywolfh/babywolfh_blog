@@ -1,3 +1,9 @@
+---
+title: Ember_Cli_Mirage使用说明
+tags: [ember,mirage] 
+categories: JavaScript
+toc: true
+---
 # Reference:
 [官网](http://www.ember-cli-mirage.com/)
 [使用例子](http://www.programwitherik.com/ember-mirage-tutorial-and-examples/)
