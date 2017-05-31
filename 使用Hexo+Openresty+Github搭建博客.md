@@ -37,7 +37,7 @@ $ npm install
 您可以在_config.yml 中修改大部份的配置。参考[官网文档](https://hexo.io/zh-cn/docs/configuration.html).
 这里只列出感兴趣的部分：
 | 参数 |	描述 |
-| ---- | ----- |
+| --- | --- |
 |title	|网站标题|
 |subtitle	|网站副标题|
 |description	|网站描述，主要用于SEO|
