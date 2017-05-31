@@ -36,16 +36,18 @@ $ npm install
 ## hexo配置
 您可以在_config.yml 中修改大部份的配置。参考[官网文档](https://hexo.io/zh-cn/docs/configuration.html).
 这里只列出感兴趣的部分：
-| 参数 |	描述 |
+
+| 参数 | 描述 |
 | --- | --- |
-|title	|网站标题|
-|subtitle	|网站副标题|
-|description	|网站描述，主要用于SEO|
+|title | 网站标题 |
+|subtitle	| 网站副标题 |
+|description	| 网站描述，主要用于SEO|
 |author	|您的名字，用于主题显示文章的作者|
 |language	|网站使用的语言，中文：zh-Hans|
 |timezone	|网站时区。比如说：America/New_York, Japan, 和 UTC 。|
 | url |	网址 |
 | theme	| 当前主题名称。值为false时禁用主题|
+
 ## hexo常用命令
 | 命令 | 功能 | 缩写 |
 | --- | --- | --- |
