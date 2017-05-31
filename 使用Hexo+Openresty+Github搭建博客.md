@@ -83,12 +83,12 @@ $ firewall-cmd --zone=public --list-service
 $ firewall-cmd --zone=public --add-port=80/tcp
 ```
 ## 开机自启动
-###第一种方法：SYSV方式
+### 第一种方法：SYSV方式
 ```
 $ chkconfig --add openresty
 $ chkconfig openresty on
 ```
-###第二种方法：systemd
+### 第二种方法：systemd
 编辑配置文件/usr/lib/systemd/system/nginx.service
 ```
 [Unit]
