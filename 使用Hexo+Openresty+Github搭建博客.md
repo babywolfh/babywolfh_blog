@@ -52,7 +52,7 @@ $ npm install
 | 命令 | 功能 | 缩写 |
 | --- | --- | --- |
 | hexo init [folder] | 新建一个网站 ||
-|hexo new [layout] \<title\> | 新建一篇文章||
+|hexo new [layout] &lt;title&gt; | 新建一篇文章||
 |hexo generate | 生成静态文件 |hexo g|
 |hexo deploy|部署网站 |hexo d|
 |hexo server | 启动服务器 ||
@@ -185,3 +185,83 @@ $hexo d -g
 ## 文章组成
 ## 常见语法
 ## 支持数学公式
+### 手动添加MathJax支持
+要让网页支持MathJax，其实只要将以下JS代码添加进你的HTML即可，但是我们不能每次生成完静态网页后自己手动添加，那样子会累死人的。
+```
+<!-- mathjax config similar to math.stackexchange -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    jax: ["input/TeX", "output/HTML-CSS"],   # 可以更改mathjax的默认输出样式
+    tex2jax: {
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$']],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    messageStyle: "none",
+    "HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"] }
+});
+</script>
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+```
+为了能让Hexo自动为需要mathjax的文章添加该js代码，我们首先进入主题的layout/_partial/文件夹，创建一个叫做mathjax.ejs的文件，代码内容就是上面的JavaScript。
+
+接下来，因为Hexo渲染你的文章的时候是通过layout/post.ejs进行的，我们只需要在代码的最后添加一个判断语句，如果该文章需要MathJax，我们就加载上面的mathjax.ejs即可。具体来说，将下面的代码添加到post.ejs尾部，注意不要添加到别的判断语句里面了。
+```
+<% if (page['math']){ %>
+<%- partial('_partial/mathjax') %>
+<% } %>
+```
+这样，就完成了Hexo 对 MathJax的支持，接下来再写文章的时候，只需要在文件的头部添加mathjax：true 即可对该文章开启公式渲染，在文章里面你就可以尽情的写公式了。
+
+### hexo-math插件
+在博客的根目录执行下面的命令安装插件
+```
+npm install hexo-math --save
+```
+修改博客根目录下的站点配置文件_config.xml添加如下内容。**一定要注意如果不修改默认配置，则下面的参数一定一律注释掉，否则会覆盖掉默认配置，造成渲染失败，这个参考网上所有文章和官方github的README，都没说这一点，害得我折腾了2个小时。**
+```
+math:
+  engine: 'mathjax' # or 'katex'
+  # 一定要注意如果不修改默认配置，则下面的参数一定一律注释掉，否则会覆盖掉默认配置，造成渲染失败，这个参考网上所有文章和官方github的README，都没说这一点，害得我折腾了2个小时。
+  # mathjax:
+  #  src: custom_mathjax_source
+  #  config:
+  #    # MathJax config
+  #katex:
+  #  css: custom_css_source
+  #  js: custom_js_source # not used
+  #  config:
+  #    # KaTeX config
+```
+
+## 转义字符
+在使用 Markdown 编写 Hexo 的 Blog 时，对于特殊字符使用“\”转义有时会不成功，最好的方式是直接使用特殊字符的编码，对应如下：
+
+| 字符 | 编码 | 含义 |
+| --- | --- | --- |
+| - |&\#45; '&minus';|  减号 |
+| ! |&\#33;        |  惊叹号Exclamation mark |
+| ” |&\#34; '&quot'; |双引号Quotation mark|
+| # |&\#35; |  数字标志Number sign |
+| $ |&\#36;  | 美元标志Dollar sign|
+| % |&\#37;        | 百分号Percent sign|
+| & |&\#38; '&amp';  |Ampersand|
+| ‘ |&\#39;        | 单引号Apostrophe|
+| ( |&\#40;       | 小括号左边部分Left parenthesis|
+| ) |&\#41;        | 小括号右边部分Right parenthesis|
+| * |&\#42;        | 星号Asterisk|
+| + |&\#43;        | 加号Plus sign|
+| < |&\#60; '&lt';   |小于号Less than|
+| = |&\#61;        | 等于符号Equals sign||
+| > |&\#62; '&gt';   |大于号Greater than|
+| ? |&\#63;       | 问号Question mark|
+| @ |&\#64;       | Commercial at|
+| [ |&\#91;       | 中括号左边部分Left square bracket|
+| \ |&\#92;        | 反斜杠Reverse solidus (backslash)|
+| ] |&\#93;        | 中括号右边部分Right square bracket|
+| { |&\#123;       | 大括号左边部分Left curly brace|
+| | |&\#124;       | 竖线Vertical bar|
+| } |&\#125;       | 大括号右边部分Right curly brace |
+
+
