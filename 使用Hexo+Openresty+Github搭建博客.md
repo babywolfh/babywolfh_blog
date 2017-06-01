@@ -235,6 +235,13 @@ math:
   #  config:
   #    # KaTeX config
 ```
+
+对于主题支持mathjax的，需要查看主题的文档来打开相关的开关，比如maupassant主题就需要在文章的front-header中添加
+```
+mathjax: true
+```
+才能启用
+
 ### 例子
 - 行内
 -
@@ -313,5 +320,5 @@ This equation {% math %}\cos 2\theta = \cos^2 \theta - \sin^2 \theta =  2 \cos^2
 | \ |&\#92;        | 反斜杠Reverse solidus (backslash)|
 | ] |&\#93;        | 中括号右边部分Right square bracket|
 | { |&\#123;       | 大括号左边部分Left curly brace|
-| | |&\#124;       | 竖线Vertical bar|
+\| | |&\#124;       | 竖线Vertical bar|
 | } |&\#125;       | 大括号右边部分Right curly brace |
