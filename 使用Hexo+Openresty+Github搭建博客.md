@@ -234,6 +234,57 @@ math:
   #  config:
   #    # KaTeX config
 ```
+### 例子
+- 行内
+-
+```
+Simple inline $a = b + c$.
+```
+
+Simple inline $a = b + c$.
+
+- 块
+-
+```
+$$\frac{\partial u}{\partial t}
+= h^2 \left( \frac{\partial^2 u}{\partial x^2} +
+\frac{\partial^2 u}{\partial y^2} +
+\frac{\partial^2 u}{\partial z^2}\right)$$
+```
+
+$$\frac{\partial u}{\partial t}
+= h^2 \left( \frac{\partial^2 u}{\partial x^2} +
+\frac{\partial^2 u}{\partial y^2} +
+\frac{\partial^2 u}{\partial z^2}\right)$$
+
+
+- 单行标签
+
+```
+This equation {% math %}\cos 2\theta = \cos^2 \theta - \sin^2 \theta =  2 \cos^2 \theta - 1 {% endmath %} is inline.
+```
+
+This equation {% math %}\cos 2\theta = \cos^2 \theta - \sin^2 \theta =  2 \cos^2 \theta - 1 {% endmath %} is inline.
+
+- 多行标签
+
+```
+{% math %}
+\begin{aligned}
+\dot{x} & = \sigma(y-x) \\
+\dot{y} & = \rho x - y - xz \\
+\dot{z} & = -\beta z + xy
+\end{aligned}
+{% endmath %}
+```
+
+{% math %}
+\begin{aligned}
+\dot{x} & = \sigma(y-x) \\
+\dot{y} & = \rho x - y - xz \\
+\dot{z} & = -\beta z + xy
+\end{aligned}
+{% endmath %}
 
 ## 转义字符
 在使用 Markdown 编写 Hexo 的 Blog 时，对于特殊字符使用“\”转义有时会不成功，最好的方式是直接使用特殊字符的编码，对应如下：
@@ -263,5 +314,3 @@ math:
 | { |&\#123;       | 大括号左边部分Left curly brace|
 | | |&\#124;       | 竖线Vertical bar|
 | } |&\#125;       | 大括号右边部分Right curly brace |
-
-
